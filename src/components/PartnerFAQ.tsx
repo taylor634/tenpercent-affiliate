@@ -67,7 +67,7 @@ const PartnerFAQ = () => {
       <div className="space-y-4">
         <h3 className="text-xl font-bold">Let's Stay in Touch</h3>
         <p className="text-muted-foreground">
-          Your partner manager is your go-to for anything in this toolkit — link issues, custom campaigns, extra assets, or just feedback on what's actually working out there.
+          We're your go-to for anything in this toolkit — link issues, custom campaigns, extra assets, or just feedback on what's actually working out there.
         </p>
 
         <Card>
