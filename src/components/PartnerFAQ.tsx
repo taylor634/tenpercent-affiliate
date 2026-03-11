@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "Are there materials I can't use?",
-    a: "Please don't use screenshots, audio clips, or video from the app without written approval first. Approved assets can be requested from your partner manager — just ask.",
+    a: "Please don't use screenshots, audio clips, or video from the app without written approval first. Approved assets can be requested from us — just ask.",
   },
   {
     q: "Do I have to disclose?",
