@@ -11,9 +11,9 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3">
-          <img src={logo} alt="10% With Dan Harris" className="h-8 object-contain" />
-          <span className="text-sm font-medium text-muted-foreground">Affiliate Toolkit</span>
+        <div className="mx-auto flex max-w-5xl items-center gap-4 px-4 py-4">
+          <img src={logo} alt="10% With Dan Harris" className="h-14 object-contain" />
+          <span className="text-xl font-bold text-foreground">Affiliate Toolkit</span>
         </div>
       </header>
 
