@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "Are there materials I can't use?",
-    a: "Please don't use screenshots, audio clips, or video from the app without written approval first. Approved assets can be requested from your partner manager — just ask.",
+    a: "Please don't use screenshots, audio clips, or video from the app without written approval first. Approved assets can be requested from us — just ask.",
   },
   {
     q: "Do I have to disclose?",
@@ -67,7 +67,7 @@ const PartnerFAQ = () => {
       <div className="space-y-4">
         <h3 className="text-xl font-bold">Let's Stay in Touch</h3>
         <p className="text-muted-foreground">
-          Your partner manager is your go-to for anything in this toolkit — link issues, custom campaigns, extra assets, or just feedback on what's actually working out there.
+          We're your go-to for anything in this toolkit — link issues, custom campaigns, extra assets, or just feedback on what's actually working out there.
         </p>
 
         <Card>
