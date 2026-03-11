@@ -5,6 +5,7 @@ import BrandGuidelines from "@/components/BrandGuidelines";
 import ReadyToUseCopy from "@/components/ReadyToUseCopy";
 import PerformanceTips from "@/components/PerformanceTips";
 import PartnerFAQ from "@/components/PartnerFAQ";
+import AffiliateProfile from "@/components/AffiliateProfile";
 
 const Dashboard = () => {
   return (
@@ -23,6 +24,7 @@ const Dashboard = () => {
           <TabsList className="mb-8 w-full flex-wrap h-auto gap-1 bg-transparent p-0">
             {[
               { value: "welcome", label: "Welcome" },
+              { value: "profile", label: "Your Profile" },
               { value: "brand", label: "Brand Guidelines" },
               { value: "copy", label: "Ready-to-Use Copy" },
               { value: "tips", label: "Performance Tips" },
@@ -39,6 +41,7 @@ const Dashboard = () => {
           </TabsList>
 
           <TabsContent value="welcome"><WelcomeSection /></TabsContent>
+          <TabsContent value="profile"><AffiliateProfile /></TabsContent>
           <TabsContent value="brand"><BrandGuidelines /></TabsContent>
           <TabsContent value="copy"><ReadyToUseCopy /></TabsContent>
           <TabsContent value="tips"><PerformanceTips /></TabsContent>
