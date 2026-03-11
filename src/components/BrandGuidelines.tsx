@@ -11,7 +11,7 @@ const voiceRows = [
 ];
 
 const avoidItems = [
-  "Don't frame the app as spiritual, religious, or \"woo\" — that's literally the opposite of what this thing is about",
+  "Don't frame the app as spiritual, religious, or \"woo\" — it's not what the app is going for",
   "Don't promise specific health outcomes or make medical claims",
   "Don't use the phrase \"life-changing\" without personal qualification",
   "Don't compare the app unfavorably to competitors by name",
