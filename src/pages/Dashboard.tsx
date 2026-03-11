@@ -5,6 +5,7 @@ import BrandGuidelines from "@/components/BrandGuidelines";
 import ReadyToUseCopy from "@/components/ReadyToUseCopy";
 import PerformanceTips from "@/components/PerformanceTips";
 import PartnerFAQ from "@/components/PartnerFAQ";
+import AffiliateProfile from "@/components/AffiliateProfile";
 
 const Dashboard = () => {
   return (
