@@ -41,6 +41,7 @@ const Dashboard = () => {
           </TabsList>
 
           <TabsContent value="welcome"><WelcomeSection /></TabsContent>
+          <TabsContent value="profile"><AffiliateProfile /></TabsContent>
           <TabsContent value="brand"><BrandGuidelines /></TabsContent>
           <TabsContent value="copy"><ReadyToUseCopy /></TabsContent>
           <TabsContent value="tips"><PerformanceTips /></TabsContent>
