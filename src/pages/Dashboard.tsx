@@ -24,6 +24,7 @@ const Dashboard = () => {
           <TabsList className="mb-8 w-full flex-wrap h-auto gap-1 bg-transparent p-0">
             {[
               { value: "welcome", label: "Welcome" },
+              { value: "profile", label: "Your Profile" },
               { value: "brand", label: "Brand Guidelines" },
               { value: "copy", label: "Ready-to-Use Copy" },
               { value: "tips", label: "Performance Tips" },
