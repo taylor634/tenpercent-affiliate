@@ -10,10 +10,10 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 border-b" style={{ backgroundColor: 'hsl(0 0% 7%)' }}>
         <div className="mx-auto flex max-w-5xl items-center gap-5 px-4 py-5">
           <img src={logo} alt="10% With Dan Harris" className="h-10 object-contain" />
-          <span className="text-3xl font-extrabold text-foreground tracking-tight">Affiliate Toolkit</span>
+          <span className="text-3xl font-extrabold tracking-tight" style={{ color: 'hsl(0 0% 96%)' }}>Affiliate Toolkit</span>
         </div>
       </header>
 
