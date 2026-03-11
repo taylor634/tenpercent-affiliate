@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "What if my link isn't working?",
-    a: "Email partners@danharris.com right away. We'll track down the issue and, where we can, credit any conversions that happened during the broken-link window.",
+    a: "Email affiliate@danharris.com right away. We'll track down the issue and, where we can, credit any conversions that happened during the broken-link window.",
   },
   {
     q: "Are there materials I can't use?",
