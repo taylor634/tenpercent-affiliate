@@ -318,14 +318,11 @@ const AffiliateProfile = () => {
               <div className="max-w-lg">
                 <img src={logo} alt="10% With Dan Harris" className="h-8 md:h-10 object-contain mb-4" />
                 <h2 className="text-2xl md:text-4xl font-light text-white leading-tight">
-                  Join {displayName} in the<br />10% Happier community
+                  Join {displayName} in the<br />10% Happier with Dan Harris community
                 </h2>
-                <div className="mt-4 flex gap-3">
-                  <div className="bg-primary px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider text-white rounded">
+                <div className="mt-4">
+                  <div className="inline-block bg-primary px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider text-white rounded">
                     Start Your Practice
-                  </div>
-                  <div className="border border-white/60 px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-white rounded">
-                    Log In
                   </div>
                 </div>
               </div>
