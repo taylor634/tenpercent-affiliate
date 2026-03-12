@@ -55,11 +55,11 @@ const sections = [
     blocks: [
       {
         title: "Subject Line Options",
-        content: `[Your subject line option 1]\n[Your subject line option 2]\n[Your subject line option 3]`,
+        content: ``,
       },
       {
         title: "Newsletter Body",
-        content: `[Your newsletter body copy here — personalize with your own experience and voice. Include your affiliate link: danharris.com/[yourname]]`,
+        content: ``,
       },
     ],
   },
@@ -69,11 +69,11 @@ const sections = [
     blocks: [
       {
         title: "Short Ad Read (30 sec)",
-        content: `[Your 30-second ad read here. Keep it conversational and mention the 20% discount and your link: danharris.com/[yourname]]`,
+        content: ``,
       },
       {
         title: "Longer Ad Read (60 sec)",
-        content: `[Your 60-second ad read here. Include a personal anecdote, the key app features, the 20% discount, and your link: danharris.com/[yourname]]`,
+        content: ``,
       },
     ],
   },
@@ -83,11 +83,11 @@ const sections = [
     blocks: [
       {
         title: "Feed Drop Intro (if Dan's team provides an episode)",
-        content: `[Your intro for a feed drop episode — set the stage for your audience and include your link: danharris.com/[yourname]]`,
+        content: ``,
       },
       {
         title: "Solo Interview / Episode Closer",
-        content: `[Your episode closer or solo episode mention — wrap up with a genuine recommendation and your link: danharris.com/[yourname]]`,
+        content: ``,
       },
     ],
   },
@@ -97,15 +97,15 @@ const sections = [
     blocks: [
       {
         title: "Instagram / Facebook Post",
-        content: `[Your Instagram/Facebook post here. Keep it authentic, mention the discount, and direct followers to the link in your bio: danharris.com/[yourname]]`,
+        content: ``,
       },
       {
         title: "X / Twitter Post",
-        content: `[Your tweet here — concise, honest, include your link: danharris.com/[yourname]]`,
+        content: ``,
       },
       {
         title: "Instagram Stories (3–4 slides)",
-        content: `Slide 1: [Hook — something personal or surprising about meditation]\nSlide 2: [What the app offers — keep it specific]\nSlide 3: [The deal — 20% off with your link]\nSlide 4: [CTA — swipe up or link in bio: danharris.com/[yourname]]`,
+        content: ``,
       },
     ],
   },
