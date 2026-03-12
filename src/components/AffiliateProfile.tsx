@@ -296,7 +296,7 @@ const AffiliateProfile = () => {
         </CardContent>
       </Card>
 
-        <div className="space-y-3">
+        {(displayName || headshotUrl || testimonial) && (
           <div>
             <h3 className="text-lg font-semibold text-foreground">Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your Testimonial will appear on your affiliate page</p>
