@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "What's the minimum payout?",
-    a: "Payouts go out once your balance hits $120. Anything below that rolls over to the next month automatically.",
+    a: "Payouts go out once your balance hits $5. Anything below that rolls over to the next month automatically.",
   },
   {
     q: "How do I see my results?",
