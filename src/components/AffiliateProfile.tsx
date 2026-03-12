@@ -221,7 +221,7 @@ const AffiliateProfile = () => {
         <div className="space-y-3">
           <div>
             <h3 className="text-lg font-semibold text-foreground">Preview</h3>
-            <p className="text-sm text-muted-foreground">This is how your profile will appear on your affiliate page</p>
+            <p className="text-sm text-muted-foreground">This is how your Testimonial will appear on your affiliate page</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_320px] gap-1 rounded-xl">
             {/* Left: testimonial rectangle */}
