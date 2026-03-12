@@ -14,7 +14,7 @@ import logo from "@/assets/logo.png";
 
 const AffiliateProfile = () => {
   const { user } = useAuth();
-  const queryClient = useQueryClient();
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
   const heroInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
