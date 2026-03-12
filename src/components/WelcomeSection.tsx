@@ -1,13 +1,31 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, Link, Cookie, Zap, Headphones, Users, Brain } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const WelcomeSection = () => {
+  const { user } = useAuth();
+  const [firstName, setFirstName] = useState("");
+
+  useEffect(() => {
+    if (!user) return;
+    supabase
+      .from("affiliate_profiles")
+      .select("first_name")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.first_name) setFirstName(data.first_name);
+      });
+  }, [user]);
+
   return (
     <div className="space-y-8">
       {/* Welcome */}
       <div className="space-y-3">
-        <h2 className="text-2xl font-bold">Welcome, _______!</h2>
+        <h2 className="text-2xl font-bold">Welcome{firstName ? `, ${firstName}` : ""}!</h2>
         <p className="text-muted-foreground leading-relaxed">
           We're really glad you're here. You're part of a community built around a simple idea: meditation doesn't have to be spiritual or weird — it's just a skill, and it actually works. This toolkit has everything you need to share the app with your audience and start earning.
         </p>
