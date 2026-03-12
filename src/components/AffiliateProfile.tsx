@@ -133,7 +133,41 @@ const AffiliateProfile = () => {
     setUploading(false);
   };
 
-  if (loading) {
+  const handleHeroUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !user) return;
+    setUploadingHero(true);
+
+    try {
+      const resized = await resizeImage(file, 1920);
+      const filePath = `${user.id}/hero-${Date.now()}.jpg`;
+      const { error: uploadError } = await supabase.storage
+        .from("headshots")
+        .upload(filePath, resized, { upsert: true, contentType: "image/jpeg" });
+
+      if (uploadError) {
+        toast.error("Upload failed.");
+        setUploadingHero(false);
+        return;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from("headshots")
+        .getPublicUrl(filePath);
+
+      await supabase
+        .from("affiliate_profiles")
+        .update({ hero_image_url: publicUrl } as any)
+        .eq("user_id", user.id);
+
+      setHeroImageUrl(publicUrl);
+      toast.success("Hero image uploaded!");
+    } catch {
+      toast.error("Upload failed.");
+    }
+    setUploadingHero(false);
+  };
+
     return (
       <div className="flex items-center justify-center py-12">
         <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
