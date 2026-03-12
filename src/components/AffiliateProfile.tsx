@@ -9,6 +9,7 @@ import { Camera, Save, User, Loader2, ImageIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import logo from "@/assets/logo.png";
 
 const AffiliateProfile = () => {
   const { user } = useAuth();
@@ -296,14 +297,53 @@ const AffiliateProfile = () => {
         </CardContent>
       </Card>
 
+      {/* Hero Landing Page Preview */}
+      {heroImageUrl && displayName && (
+        <div className="space-y-3">
+          <div>
+            <h3 className="text-lg font-semibold text-foreground">Landing Page Preview</h3>
+            <p className="text-sm text-muted-foreground">This is how your affiliate landing page hero will appear</p>
+          </div>
+          <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/9' }}>
+            <img
+              src={heroImageUrl}
+              alt="Hero background"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+            {/* Content overlay */}
+            <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-10">
+              {/* Logo top-left */}
+              <div>
+                <img src={logo} alt="10% With Dan Harris" className="h-8 md:h-10 object-contain" />
+              </div>
+              {/* Text + buttons bottom-left */}
+              <div className="max-w-lg">
+                <h2 className="text-2xl md:text-4xl font-light text-white leading-tight">
+                  Join {displayName} in the<br />10% Happier community
+                </h2>
+                <div className="mt-4 flex gap-3">
+                  <div className="bg-primary px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider text-white rounded">
+                    Start Your Practice
+                  </div>
+                  <div className="border border-white/60 px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-white rounded">
+                    Log In
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {(displayName || headshotUrl || testimonial) && (
         <div className="space-y-3">
           <div>
-            <h3 className="text-lg font-semibold text-foreground">Preview</h3>
+            <h3 className="text-lg font-semibold text-foreground">Testimonial Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your Testimonial will appear on your affiliate page</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_320px] gap-1 rounded-xl">
-            {/* Left: testimonial rectangle */}
             <div className="flex flex-col justify-between bg-foreground p-8 md:p-10 rounded-lg min-h-[320px]">
               {testimonial && (
                 <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light break-words overflow-wrap-anywhere">
@@ -319,7 +359,6 @@ const AffiliateProfile = () => {
                 </div>
               )}
             </div>
-            {/* Right: headshot matches left block height */}
             {headshotUrl && (
               <div className="rounded-lg overflow-hidden md:w-[320px]">
                 <img
