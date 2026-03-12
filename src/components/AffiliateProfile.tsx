@@ -41,15 +41,23 @@ const AffiliateProfile = () => {
   const handleSave = async () => {
     if (!user) return;
     setSaving(true);
-    const { error } = await supabase
-      .from("affiliate_profiles")
-      .update({ display_name: displayName, testimonial })
-      .eq("user_id", user.id);
+    console.log("[AffiliateProfile] Saving profile for user:", user.id);
+    try {
+      const { error, status, statusText } = await supabase
+        .from("affiliate_profiles")
+        .update({ display_name: displayName, testimonial })
+        .eq("user_id", user.id)
+        .select();
 
-    if (error) {
+      console.log("[AffiliateProfile] Save response:", { status, statusText, error });
+      if (error) {
+        toast.error("Failed to save profile.");
+      } else {
+        toast.success("Profile saved!");
+      }
+    } catch (err) {
+      console.error("[AffiliateProfile] Save exception:", err);
       toast.error("Failed to save profile.");
-    } else {
-      toast.success("Profile saved!");
     }
     setSaving(false);
   };
