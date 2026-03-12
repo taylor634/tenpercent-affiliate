@@ -236,6 +236,9 @@ const AffiliateProfile = () => {
               </div>
             )}
           </div>
+        </div>
+      )}
+    </div>
   );
 };
 
