@@ -208,7 +208,7 @@ const AffiliateProfile = () => {
             <h3 className="text-lg font-semibold text-foreground">Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your profile will appear on your affiliate page</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] overflow-hidden rounded-xl border border-border">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-1 overflow-hidden rounded-xl">
             {/* Left: testimonial rectangle */}
             <div className="flex flex-col justify-between bg-foreground p-8 md:p-10">
               {testimonial && (
