@@ -256,7 +256,46 @@ const AffiliateProfile = () => {
         </Card>
       </div>
 
-      {(displayName || headshotUrl || testimonial) && (
+      {/* Hero Image Upload */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg flex items-center gap-2">
+            <ImageIcon className="h-5 w-5 text-primary" />
+            Hero Image
+          </CardTitle>
+          <CardDescription>
+            This large photo will be used as the background of your affiliate landing page (like the example with "Join [Your Name] in the 10% Happier community").
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {heroImageUrl && (
+            <div className="relative w-full overflow-hidden rounded-lg border border-border" style={{ aspectRatio: '16/9' }}>
+              <img
+                src={heroImageUrl}
+                alt="Hero preview"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          )}
+          <input
+            ref={heroInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleHeroUpload}
+          />
+          <Button
+            variant="outline"
+            onClick={() => heroInputRef.current?.click()}
+            className="gap-2"
+            disabled={uploadingHero}
+          >
+            {uploadingHero ? <Loader2 className="h-4 w-4 animate-spin" /> : <ImageIcon className="h-4 w-4" />}
+            {uploadingHero ? "Uploading..." : heroImageUrl ? "Change Hero Image" : "Upload Hero Image"}
+          </Button>
+        </CardContent>
+      </Card>
+
         <div className="space-y-3">
           <div>
             <h3 className="text-lg font-semibold text-foreground">Preview</h3>
