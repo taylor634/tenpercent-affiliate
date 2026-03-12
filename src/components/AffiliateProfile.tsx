@@ -35,6 +35,7 @@ const AffiliateProfile = () => {
         setDisplayName(data.display_name);
         setTestimonial(data.testimonial);
         setHeadshotUrl(data.headshot_url);
+        setHeroImageUrl((data as any).hero_image_url ?? null);
       }
       setLoading(false);
     };
