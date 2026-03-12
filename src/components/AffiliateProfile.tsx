@@ -40,26 +40,33 @@ const AffiliateProfile = () => {
 
   const handleSave = async () => {
     if (!user) return;
+
     setSaving(true);
-    console.log("[AffiliateProfile] Saving profile for user:", user.id);
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 12000);
+
     try {
-      const { error, status, statusText } = await supabase
+      const { error } = await supabase
         .from("affiliate_profiles")
         .update({ display_name: displayName, testimonial })
         .eq("user_id", user.id)
-        .select();
+        .abortSignal(controller.signal);
 
-      console.log("[AffiliateProfile] Save response:", { status, statusText, error });
       if (error) {
         toast.error("Failed to save profile.");
       } else {
         toast.success("Profile saved!");
       }
     } catch (err) {
-      console.error("[AffiliateProfile] Save exception:", err);
-      toast.error("Failed to save profile.");
+      if (err instanceof DOMException && err.name === "AbortError") {
+        toast.error("Save timed out. Please try again.");
+      } else {
+        toast.error("Failed to save profile.");
+      }
+    } finally {
+      window.clearTimeout(timeoutId);
+      setSaving(false);
     }
-    setSaving(false);
   };
 
   const resizeImage = (file: File, maxSize = 800): Promise<Blob> => {
