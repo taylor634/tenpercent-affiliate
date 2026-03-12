@@ -270,7 +270,7 @@ const AffiliateProfile = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           {heroImageUrl && (
-            <div className="relative w-full overflow-hidden rounded-lg border border-border" style={{ aspectRatio: '16/9' }}>
+            <div className="relative max-w-sm overflow-hidden rounded-lg border border-border" style={{ aspectRatio: '16/9' }}>
               <img
                 src={heroImageUrl}
                 alt="Hero preview"
