@@ -54,34 +54,64 @@ const AffiliateProfile = () => {
     setSaving(false);
   };
 
+  const resizeImage = (file: File, maxSize = 800): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let { width, height } = img;
+        if (width > height) {
+          if (width > maxSize) { height = (height * maxSize) / width; width = maxSize; }
+        } else {
+          if (height > maxSize) { width = (width * maxSize) / height; height = maxSize; }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d")!.drawImage(img, 0, 0, width, height);
+        canvas.toBlob(
+          (blob) => (blob ? resolve(blob) : reject(new Error("Resize failed"))),
+          "image/jpeg",
+          0.85
+        );
+      };
+      img.onerror = reject;
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !user) return;
     setUploading(true);
 
-    const filePath = `${user.id}/headshot-${Date.now()}.${file.name.split(".").pop()}`;
-    const { error: uploadError } = await supabase.storage
-      .from("headshots")
-      .upload(filePath, file, { upsert: true });
+    try {
+      const resized = await resizeImage(file);
+      const filePath = `${user.id}/headshot-${Date.now()}.jpg`;
+      const { error: uploadError } = await supabase.storage
+        .from("headshots")
+        .upload(filePath, resized, { upsert: true, contentType: "image/jpeg" });
 
-    if (uploadError) {
+      if (uploadError) {
+        toast.error("Upload failed.");
+        setUploading(false);
+        return;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from("headshots")
+        .getPublicUrl(filePath);
+
+      await supabase
+        .from("affiliate_profiles")
+        .update({ headshot_url: publicUrl })
+        .eq("user_id", user.id);
+
+      setHeadshotUrl(publicUrl);
+      toast.success("Photo uploaded!");
+    } catch {
       toast.error("Upload failed.");
-      setUploading(false);
-      return;
     }
-
-    const { data: { publicUrl } } = supabase.storage
-      .from("headshots")
-      .getPublicUrl(filePath);
-
-    await supabase
-      .from("affiliate_profiles")
-      .update({ headshot_url: publicUrl })
-      .eq("user_id", user.id);
-
-    setHeadshotUrl(publicUrl);
     setUploading(false);
-    toast.success("Photo uploaded!");
   };
 
   if (loading) {
