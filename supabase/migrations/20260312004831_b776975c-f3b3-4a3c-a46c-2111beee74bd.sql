@@ -1,0 +1,1 @@
+ALTER TABLE public.affiliate_profiles ADD COLUMN hero_image_url text DEFAULT null;

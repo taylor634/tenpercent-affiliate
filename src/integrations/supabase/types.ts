@@ -20,6 +20,7 @@ export type Database = {
           display_name: string
           first_name: string
           headshot_url: string | null
+          hero_image_url: string | null
           id: string
           last_name: string
           testimonial: string
@@ -31,6 +32,7 @@ export type Database = {
           display_name?: string
           first_name?: string
           headshot_url?: string | null
+          hero_image_url?: string | null
           id?: string
           last_name?: string
           testimonial?: string
@@ -42,6 +44,7 @@ export type Database = {
           display_name?: string
           first_name?: string
           headshot_url?: string | null
+          hero_image_url?: string | null
           id?: string
           last_name?: string
           testimonial?: string
