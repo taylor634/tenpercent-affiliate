@@ -227,7 +227,7 @@ const AffiliateProfile = () => {
             {/* Left: testimonial rectangle */}
             <div className="flex flex-col justify-between bg-foreground p-8 md:p-10 rounded-lg min-h-[320px]">
               {testimonial && (
-                <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light">
+                <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light break-words overflow-wrap-anywhere">
                   &ldquo;{testimonial}&rdquo;
                 </blockquote>
               )}
