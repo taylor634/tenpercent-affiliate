@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Camera, Save, User, Loader2 } from "lucide-react";
+import { Camera, Save, User, Loader2, ImageIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
@@ -13,12 +13,15 @@ import { toast } from "sonner";
 const AffiliateProfile = () => {
   const { user } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const heroInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
   const [testimonial, setTestimonial] = useState("");
   const [headshotUrl, setHeadshotUrl] = useState<string | null>(null);
+  const [heroImageUrl, setHeroImageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadingHero, setUploadingHero] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -32,6 +35,7 @@ const AffiliateProfile = () => {
         setDisplayName(data.display_name);
         setTestimonial(data.testimonial);
         setHeadshotUrl(data.headshot_url);
+        setHeroImageUrl((data as any).hero_image_url ?? null);
       }
       setLoading(false);
     };
@@ -129,6 +133,41 @@ const AffiliateProfile = () => {
     setUploading(false);
   };
 
+  const handleHeroUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !user) return;
+    setUploadingHero(true);
+
+    try {
+      const resized = await resizeImage(file, 1920);
+      const filePath = `${user.id}/hero-${Date.now()}.jpg`;
+      const { error: uploadError } = await supabase.storage
+        .from("headshots")
+        .upload(filePath, resized, { upsert: true, contentType: "image/jpeg" });
+
+      if (uploadError) {
+        toast.error("Upload failed.");
+        setUploadingHero(false);
+        return;
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from("headshots")
+        .getPublicUrl(filePath);
+
+      await supabase
+        .from("affiliate_profiles")
+        .update({ hero_image_url: publicUrl } as any)
+        .eq("user_id", user.id);
+
+      setHeroImageUrl(publicUrl);
+      toast.success("Hero image uploaded!");
+    } catch {
+      toast.error("Upload failed.");
+    }
+    setUploadingHero(false);
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -216,6 +255,46 @@ const AffiliateProfile = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Hero Image Upload */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg flex items-center gap-2">
+            <ImageIcon className="h-5 w-5 text-primary" />
+            Hero Image
+          </CardTitle>
+          <CardDescription>
+            This large photo will be used as the background of your affiliate landing page (like the example with "Join [Your Name] in the 10% Happier community").
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {heroImageUrl && (
+            <div className="relative w-full overflow-hidden rounded-lg border border-border" style={{ aspectRatio: '16/9' }}>
+              <img
+                src={heroImageUrl}
+                alt="Hero preview"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          )}
+          <input
+            ref={heroInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleHeroUpload}
+          />
+          <Button
+            variant="outline"
+            onClick={() => heroInputRef.current?.click()}
+            className="gap-2"
+            disabled={uploadingHero}
+          >
+            {uploadingHero ? <Loader2 className="h-4 w-4 animate-spin" /> : <ImageIcon className="h-4 w-4" />}
+            {uploadingHero ? "Uploading..." : heroImageUrl ? "Change Hero Image" : "Upload Hero Image"}
+          </Button>
+        </CardContent>
+      </Card>
 
       {(displayName || headshotUrl || testimonial) && (
         <div className="space-y-3">
