@@ -125,8 +125,8 @@ const ReadyToUseCopy = () => {
 
       {sections.map((section) => (
         <div key={section.heading} className="space-y-4">
-          <h3 className="flex items-center gap-2 text-lg font-bold">
-            <section.icon className="h-5 w-5 text-primary" />
+          <h3 className="flex items-center gap-2 text-lg font-bold text-foreground">
+            <section.icon className="h-5 w-5 text-foreground" />
             {section.heading}
           </h3>
           <div className="grid gap-4">
