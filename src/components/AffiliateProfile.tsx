@@ -208,8 +208,8 @@ const AffiliateProfile = () => {
             <h3 className="text-lg font-semibold text-foreground">Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your profile will appear on your affiliate page</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] overflow-hidden rounded-xl border border-border">
-            {/* Left: testimonial on black background */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] overflow-hidden rounded-xl border border-border">
+            {/* Left: testimonial rectangle */}
             <div className="flex flex-col justify-between bg-foreground p-8 md:p-10">
               {testimonial && (
                 <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light">
@@ -225,9 +225,9 @@ const AffiliateProfile = () => {
                 </div>
               )}
             </div>
-            {/* Right: headshot */}
+            {/* Right: square headshot */}
             {headshotUrl && (
-              <div className="h-64 md:h-auto md:w-72">
+              <div className="aspect-square w-full md:w-[320px]">
                 <img
                   src={headshotUrl}
                   alt={displayName || "Affiliate headshot"}
