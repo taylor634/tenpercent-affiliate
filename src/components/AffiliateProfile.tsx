@@ -313,13 +313,10 @@ const AffiliateProfile = () => {
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
             {/* Content overlay */}
-            <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-10">
-              {/* Logo top-left */}
-              <div>
-                <img src={logo} alt="10% With Dan Harris" className="h-8 md:h-10 object-contain" />
-              </div>
-              {/* Text + buttons bottom-left */}
+            <div className="relative z-10 flex h-full flex-col justify-end p-6 md:p-10">
+              {/* Logo + Text + buttons bottom-left */}
               <div className="max-w-lg">
+                <img src={logo} alt="10% With Dan Harris" className="h-8 md:h-10 object-contain mb-4" />
                 <h2 className="text-2xl md:text-4xl font-light text-white leading-tight">
                   Join {displayName} in the<br />10% Happier community
                 </h2>
