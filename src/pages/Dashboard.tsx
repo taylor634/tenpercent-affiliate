@@ -23,7 +23,7 @@ const Dashboard = () => {
           <span className="text-3xl font-extrabold tracking-tight" style={{ color: 'hsl(0 0% 96%)' }}>Affiliate Toolkit</span>
           <div className="ml-auto flex items-center gap-2">
             {isAdmin && (
-              <Button variant="outline" size="sm" onClick={() => navigate("/admin")} className="gap-1.5" style={{ color: 'hsl(0 0% 96%)', borderColor: 'hsl(0 0% 30%)' }}>
+              <Button variant="outline" size="sm" onClick={() => navigate("/admin")} className="gap-1.5 hover:bg-primary hover:text-primary-foreground" style={{ backgroundColor: 'hsl(8 78% 56%)', color: 'white', borderColor: 'hsl(8 78% 56%)' }}>
                 <Shield className="h-3.5 w-3.5" /> Admin
               </Button>
             )}
