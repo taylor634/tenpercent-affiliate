@@ -265,7 +265,7 @@ const AffiliateProfile = () => {
             Hero Image
           </CardTitle>
           <CardDescription>
-            This large photo will be used as the background of your affiliate landing page (like the example with "Join [Your Name] in the 10% Happier community").
+            This large photo will be used as the background at the top of your affiliate landing page.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
