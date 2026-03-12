@@ -337,13 +337,13 @@ const AffiliateProfile = () => {
         </div>
       )}
 
+      {(displayName || headshotUrl || testimonial) && (
         <div className="space-y-3">
           <div>
-            <h3 className="text-lg font-semibold text-foreground">Preview</h3>
+            <h3 className="text-lg font-semibold text-foreground">Testimonial Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your Testimonial will appear on your affiliate page</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_320px] gap-1 rounded-xl">
-            {/* Left: testimonial rectangle */}
             <div className="flex flex-col justify-between bg-foreground p-8 md:p-10 rounded-lg min-h-[320px]">
               {testimonial && (
                 <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light break-words overflow-wrap-anywhere">
@@ -359,7 +359,6 @@ const AffiliateProfile = () => {
                 </div>
               )}
             </div>
-            {/* Right: headshot matches left block height */}
             {headshotUrl && (
               <div className="rounded-lg overflow-hidden md:w-[320px]">
                 <img
