@@ -14,6 +14,11 @@ const Auth = () => {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   if (authLoading) {
     return (
@@ -26,11 +31,6 @@ const Auth = () => {
   if (user) {
     return <Navigate to="/" replace />;
   }
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
