@@ -126,7 +126,7 @@ const WelcomeSection = () => {
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
             <p>Commissions are tallied at the end of each month and paid out within 15 business days via PayPal.</p>
-            <Badge variant="outline" className="mt-2">Minimum payout: $50</Badge>
+            <Badge variant="outline" className="mt-2">Minimum payout: $120</Badge>
           </CardContent>
         </Card>
       </div>
