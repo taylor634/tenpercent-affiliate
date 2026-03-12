@@ -138,7 +138,7 @@ const WelcomeSection = () => {
           <div>
             <p className="font-semibold">Attribution & Tracking</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Your link has a 30-day cookie window — meaning if someone clicks and subscribes any time in the following 30 days, that conversion is yours, even if they didn't buy on the spot.
+              Your link has a 90-day cookie window — meaning if someone clicks and subscribes any time in the following 90 days, that conversion is yours, even if they didn't buy on the spot.
             </p>
           </div>
         </CardContent>
