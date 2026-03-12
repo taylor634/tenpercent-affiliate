@@ -8,13 +8,13 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Camera, Save, User, Loader2, ImageIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 import logo from "@/assets/logo.png";
 
 const AffiliateProfile = () => {
   const { user } = useAuth();
-  const queryClient = useQueryClient();
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
   const heroInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
