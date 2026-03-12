@@ -126,7 +126,7 @@ const WelcomeSection = () => {
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-muted-foreground">
             <p>Commissions are tallied at the end of each month and paid out within 15 business days via PayPal.</p>
-            <Badge variant="outline" className="mt-2">Minimum payout: $50</Badge>
+            <Badge variant="outline" className="mt-2">Minimum payout: $120</Badge>
           </CardContent>
         </Card>
       </div>
@@ -138,7 +138,7 @@ const WelcomeSection = () => {
           <div>
             <p className="font-semibold">Attribution & Tracking</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Your link has a 30-day cookie window — meaning if someone clicks and subscribes any time in the following 30 days, that conversion is yours, even if they didn't buy on the spot.
+              Your link has a 90-day cookie window — meaning if someone clicks and subscribes any time in the following 90 days, that conversion is yours, even if they didn't buy on the spot.
             </p>
           </div>
         </CardContent>

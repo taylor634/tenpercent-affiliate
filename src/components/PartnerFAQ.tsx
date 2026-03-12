@@ -5,7 +5,7 @@ import { Mail, Globe, ExternalLink } from "lucide-react";
 const faqs = [
   {
     q: "How does my link work?",
-    a: "Your personalized URL (danharris.com/[yourname]) has a 30-day cookie. Anyone who clicks and subscribes within 30 days is a conversion credited to you — even if they didn't buy immediately.",
+    a: "Your personalized URL (danharris.com/[yourname]) has a 90-day cookie. Anyone who clicks and subscribes within 90 days is a conversion credited to you — even if they didn't buy immediately.",
   },
   {
     q: "When do I get paid?",
@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "What's the minimum payout?",
-    a: "Payouts go out once your balance hits $50. Anything below that rolls over to the next month automatically.",
+    a: "Payouts go out once your balance hits $120. Anything below that rolls over to the next month automatically.",
   },
   {
     q: "How do I see my results?",
