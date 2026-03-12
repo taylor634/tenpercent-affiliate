@@ -203,27 +203,40 @@ const AffiliateProfile = () => {
       </div>
 
       {(displayName || headshotUrl || testimonial) && (
-        <Card className="border-dashed">
-          <CardHeader>
-            <CardTitle className="text-lg">Preview</CardTitle>
-            <CardDescription>This is how your profile will appear on your affiliate page</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-              {headshotUrl && (
-                <Avatar className="h-24 w-24 shrink-0 border border-border">
-                  <AvatarImage src={headshotUrl} alt="Preview" className="object-cover" />
-                </Avatar>
+        <div className="space-y-3">
+          <div>
+            <h3 className="text-lg font-semibold text-foreground">Preview</h3>
+            <p className="text-sm text-muted-foreground">This is how your profile will appear on your affiliate page</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] overflow-hidden rounded-xl border border-border">
+            {/* Left: testimonial on black background */}
+            <div className="flex flex-col justify-between bg-foreground p-8 md:p-10">
+              {testimonial && (
+                <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light">
+                  &ldquo;{testimonial}&rdquo;
+                </blockquote>
               )}
-              <div className="text-center sm:text-left">
-                {displayName && <p className="text-lg font-semibold text-foreground">{displayName}</p>}
-                {testimonial && (
-                  <blockquote className="mt-2 italic text-muted-foreground">"{testimonial}"</blockquote>
-                )}
-              </div>
+              {displayName && (
+                <div className="mt-8 flex items-center gap-3">
+                  <span className="block h-[2px] w-8 bg-primary" />
+                  <span className="text-sm tracking-widest uppercase text-background/70">
+                    {displayName}
+                  </span>
+                </div>
+              )}
             </div>
-          </CardContent>
-        </Card>
+            {/* Right: headshot */}
+            {headshotUrl && (
+              <div className="h-64 md:h-auto md:w-72">
+                <img
+                  src={headshotUrl}
+                  alt={displayName || "Affiliate headshot"}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
