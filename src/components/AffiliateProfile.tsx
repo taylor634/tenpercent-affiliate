@@ -14,35 +14,39 @@ import logo from "@/assets/logo.png";
 
 const AffiliateProfile = () => {
   const { user } = useAuth();
+  const queryClient = useQueryClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const heroInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
   const [testimonial, setTestimonial] = useState("");
   const [headshotUrl, setHeadshotUrl] = useState<string | null>(null);
   const [heroImageUrl, setHeroImageUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadingHero, setUploadingHero] = useState(false);
 
-  useEffect(() => {
-    if (!user) return;
-    const fetchProfile = async () => {
+  const { data: profile, isLoading: loading } = useQuery({
+    queryKey: ["affiliate-profile", user?.id],
+    queryFn: async () => {
       const { data } = await supabase
         .from("affiliate_profiles")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("user_id", user!.id)
         .maybeSingle();
-      if (data) {
-        setDisplayName(data.display_name);
-        setTestimonial(data.testimonial);
-        setHeadshotUrl(data.headshot_url);
-        setHeroImageUrl((data as any).hero_image_url ?? null);
-      }
-      setLoading(false);
-    };
-    fetchProfile();
-  }, [user]);
+      return data;
+    },
+    enabled: !!user,
+    staleTime: 5 * 60 * 1000,
+  });
+
+  useEffect(() => {
+    if (profile) {
+      setDisplayName(profile.display_name);
+      setTestimonial(profile.testimonial);
+      setHeadshotUrl(profile.headshot_url);
+      setHeroImageUrl(profile.hero_image_url ?? null);
+    }
+  }, [profile]);
 
   const handleSave = async () => {
     if (!user) return;
