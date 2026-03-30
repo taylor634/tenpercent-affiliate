@@ -29,15 +29,7 @@ const BrandGuidelines = () => {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm uppercase tracking-wide text-primary">Short (1 sentence)</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground italic">
-            [Your short description here]
-          </CardContent>
-        </Card>
+      <div className="grid gap-4 sm:grid-cols-2">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm uppercase tracking-wide text-primary">Medium (2–3 sentences)</CardTitle>
