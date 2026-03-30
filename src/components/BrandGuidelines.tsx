@@ -25,7 +25,7 @@ const BrandGuidelines = () => {
       <div className="space-y-3">
         <h2 className="text-2xl font-bold">How to Describe the App</h2>
         <p className="text-muted-foreground">
-          These are the phrases that work best in the wild. Consistent language helps your audience understand exactly what they're signing up for — and makes them way more likely to follow through.
+          These are the phrases that work best in the wild for us. We also want to make sure your audience understands exactly what they’re signing up for without giving you homework to do. You should, of course, put suggested language into your own voice and reach out to affiliate@danharris.com with any questions about the product.
         </p>
       </div>
 

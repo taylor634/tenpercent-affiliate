@@ -37,9 +37,9 @@ const WelcomeSection = () => {
           <CardTitle className="text-lg">The Quick Version</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
-          <p>• You earn <strong>X% commission</strong> on every annual subscription purchase made through your link.</p>
+          <p>• You earn <strong>20% commission</strong> on every annual subscription purchase made through your link.</p>
           <p>• Your audience gets <strong>20% off</strong> their first annual subscription — exclusively through your link.</p>
-          <p>• Your custom link: <strong className="text-primary">danharris.com/[yourname]</strong></p>
+          <p>• Your custom link</p>
         </CardContent>
       </Card>
 
@@ -47,7 +47,7 @@ const WelcomeSection = () => {
       <div className="space-y-3">
         <h3 className="text-xl font-bold">About 10% With Dan Harris</h3>
         <p className="text-muted-foreground leading-relaxed">
-          10% With Dan Harris is a meditation app for people who are skeptical of meditation — or who tried it once and quietly gave up. Dan Harris, former ABC News anchor and bestselling author of 10% Happier, built this thing on one core idea: you don't have to believe in anything. Meditation is just a skill. Practice it and you get measurably calmer, kinder, and better at dealing with difficult people. No crystals required.
+          A simple, easy to use app including guided meditations, ad-free podcast access, live meditation and Q&A sessions, and a vibrant, supportive community of real people — led by Dan Harris and a rotating lineup of world-class teachers.
         </p>
       </div>
 
@@ -57,12 +57,12 @@ const WelcomeSection = () => {
           {
             icon: Brain,
             title: "Guided Meditations",
-            desc: "A growing library of guided sessions covering stress, anxiety, focus, sleep, difficult people, and more. Short, practical, and taught by world-class teachers.",
+            desc: "A library of guided sessions to help with stress, anxiety, focus, sleep, annoying people, and more",
           },
           {
             icon: Zap,
             title: "Meditation Challenges",
-            desc: "Structured programs that give your practice an actual spine — clear goals, daily guidance, and a community of people doing it alongside you.",
+            desc: "Structured programs to deepen your practice with clear goals, daily guidance, and community support",
           },
           {
             icon: Headphones,
@@ -72,7 +72,7 @@ const WelcomeSection = () => {
           {
             icon: Users,
             title: "Community Connection",
-            desc: "Real conversations with thousands of fellow meditators. The kind of community where you can admit you haven't sat in two weeks and get encouragement instead of judgment.",
+            desc: "Join conversations with thousands of other practitioners who get it. Share your struggles, celebrate wins, get support when you need it",
           },
         ].map((f) => (
           <Card key={f.title}>
@@ -91,7 +91,7 @@ const WelcomeSection = () => {
       <div className="space-y-3">
         <h3 className="text-xl font-bold">How the Affiliate Program Works</h3>
         <p className="text-muted-foreground leading-relaxed">
-          When someone clicks your link, they land on a page with your exclusive 20% off offer on an annual subscription. Every purchase gets tracked back to you automatically — nothing extra required on your end.
+          When someone clicks your link, they land on a page with your exclusive 20% discount on an annual subscription. Every purchase gets tracked back to you automatically and your 20% commission will be paid out automatically each month. There is no cap on your potential earnings..
         </p>
         <Card className="border-primary/20">
           <CardContent className="flex items-center gap-3 p-4">
@@ -114,7 +114,7 @@ const WelcomeSection = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-1 text-sm text-muted-foreground">
-            <p>• 10% per sale</p>
+            <p>• 20% per sale</p>
             <p>• Paid monthly</p>
             <p>• Tracked in real time</p>
             <p>• No earnings cap</p>
@@ -138,7 +138,7 @@ const WelcomeSection = () => {
           <div>
             <p className="font-semibold">Attribution & Tracking</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Your link has a 90-day cookie window — meaning if someone clicks and subscribes any time in the following 90 days, that conversion is yours, even if they didn't buy on the spot.
+              Your link has a 90-day cookie window; if someone clicks and subscribes any time in the following 90 days, that conversion is yours, even if they didn't buy on the spot.
             </p>
           </div>
         </CardContent>
