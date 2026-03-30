@@ -34,16 +34,20 @@ const BrandGuidelines = () => {
           <CardHeader className="pb-2">
             <CardTitle className="text-sm uppercase tracking-wide text-primary">Medium (2–3 sentences)</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground italic">
-            [Your medium description here]
+          <CardContent className="text-sm text-muted-foreground">
+            The world is insane. You don't have to be.
+            Jump start or deepen your mediation practice with a library of guided meditations, ad-free podcast access, live sessions, and a community of real people — led by Dan Harris and a rotating lineup of world-class teachers.
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm uppercase tracking-wide text-primary">Longer (newsletters / long-form)</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground italic">
-            [Your longer description here]
+          <CardContent className="text-sm text-muted-foreground whitespace-pre-wrap">
+            For millennia, people have meditated together—in community. But in our tech-drenched, hyper-individualized, lonely era, meditation has largely become a solo pursuit. This may be one of the main reasons so many people struggle to create an abiding habit.{"\n\n"}
+            In a meditation context, community accelerates insight. Your breakthrough often comes from hearing someone else's question. Your confusion gets normalized when others share the same struggle. And your practice deepens when you're part of something larger than yourself.{"\n\n"}
+            In addition to a growing community, this new product also comes with all the good stuff you’ve come to expect from a meditation app, including a rich library of guided meditations from our curated collection of world class teachers.{"\n\n"}
+            What we’re building is the ultimate dojo for training those skills.
           </CardContent>
         </Card>
       </div>
