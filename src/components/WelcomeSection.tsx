@@ -26,8 +26,8 @@ const WelcomeSection = () => {
       {/* Welcome */}
       <div className="space-y-3">
         <h2 className="text-2xl font-bold">Welcome{firstName ? `, ${firstName}` : ""}!</h2>
-        <p className="text-muted-foreground leading-relaxed">
-          We're really glad you're here. You're part of a community built around a simple idea: meditation doesn't have to be spiritual or weird — it's just a skill, and it actually works. This toolkit has everything you need to share the app with your audience and start earning.
+        <p className="text-muted-foreground leading-relaxed text-base">
+          We're really grateful you're here. Thank you for sharing our meditation app and community with your audience. This toolkit has everything you need to share the app with your audience and start earning.
         </p>
       </div>
 
