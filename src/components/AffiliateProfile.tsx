@@ -228,33 +228,70 @@ const AffiliateProfile = () => {
             <h3 className="text-lg font-semibold text-foreground">Testimonial Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your Testimonial will appear on your affiliate page</p>
           </div>
-          <div className="relative rounded-xl overflow-hidden min-h-[480px]">
-            {headshotUrl ? (
-              <img
-                src={headshotUrl}
-                alt={displayName || "Affiliate headshot"}
-                className="h-full w-full object-cover absolute inset-0"
-              />
-            ) : (
-              <div className="h-full w-full absolute inset-0 bg-muted" />
-            )}
-            {(testimonial || displayName) && (
-              <div className="absolute bottom-0 right-0 w-full md:w-[55%] bg-foreground/90 p-8 md:p-10">
-                {testimonial && (
-                  <blockquote className="text-base md:text-lg leading-relaxed text-background font-light break-words overflow-wrap-anywhere">
-                    &ldquo;{testimonial}&rdquo;
-                  </blockquote>
+          <div className="rounded-xl overflow-hidden border border-border bg-background">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-3 border-b border-border">
+              <span className="text-sm font-semibold tracking-wide uppercase text-foreground">DAN HARRIS</span>
+              <span className="text-sm font-medium text-foreground">MENU</span>
+            </div>
+
+            {/* Main content */}
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Left column */}
+              <div className="flex flex-col justify-center px-6 md:px-10 py-8 md:py-12 space-y-6">
+                <div className="inline-flex">
+                  <span className="bg-foreground text-background text-xs font-bold px-3 py-1.5 rounded-full">
+                    10%<sup className="text-[8px]">with</sup> → Dan Harris
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-foreground">
+                  The world is insane.<br />You don't have to be.
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
+                  Your meditation practice starts here. Guided meditations, ad-free podcast access, live sessions, and a community of real people — led by Dan Harris and a rotating lineup of world-class teachers.
+                </p>
+                <div className="space-y-3">
+                  <button className="bg-primary text-primary-foreground text-sm font-bold uppercase tracking-wider px-6 py-3 rounded-md">
+                    Start for Free Today
+                  </button>
+                  <p className="text-xs text-muted-foreground">
+                    Already a member? <span className="underline">Log in</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Right column — photo with testimonial overlay */}
+              <div className="relative min-h-[400px] md:min-h-[500px]">
+                {headshotUrl ? (
+                  <img
+                    src={headshotUrl}
+                    alt={displayName || "Affiliate headshot"}
+                    className="h-full w-full object-cover absolute inset-0"
+                  />
+                ) : (
+                  <div className="h-full w-full absolute inset-0 bg-muted flex items-center justify-center">
+                    <User className="h-20 w-20 text-muted-foreground/40" />
+                  </div>
                 )}
-                {displayName && (
-                  <div className="mt-6 flex items-center gap-3">
-                    <span className="block h-[2px] w-6 bg-primary" />
-                    <span className="text-xs tracking-widest uppercase text-background/70">
-                      {displayName}
-                    </span>
+                {(testimonial || displayName) && (
+                  <div className="absolute bottom-0 right-0 w-full md:w-[85%] bg-foreground/90 p-6 md:p-8">
+                    {testimonial && (
+                      <blockquote className="text-sm md:text-base leading-relaxed text-background font-light break-words">
+                        &ldquo;{testimonial}&rdquo;
+                      </blockquote>
+                    )}
+                    {displayName && (
+                      <div className="mt-4 flex items-center gap-3">
+                        <span className="block h-[2px] w-6 bg-primary" />
+                        <span className="text-[10px] tracking-widest uppercase text-background/70">
+                          {displayName}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
