@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     q: "Do I have to disclose?",
-    a: "Yes. FTC guidelines require disclosure of any material connection to a brand you're promoting — including affiliate arrangements. Something simple like \"This is a paid partnership\" or \"Ad:\" does the job.",
+    a: "Yes. FTC guidelines require disclosure of any material connection to a brand you’re promoting — including affiliate arrangements. Something simple like “This is a paid partnership” or “Ad:” does the job. Ideally, you’ll be straight with you audience; you get 20% off and I get 20%.",
   },
 ];
 
