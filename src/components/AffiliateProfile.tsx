@@ -266,7 +266,7 @@ const AffiliateProfile = () => {
                   <img
                     src={headshotUrl}
                     alt={displayName || "Affiliate headshot"}
-                    className="h-full w-full object-cover absolute inset-0"
+                    className="h-full w-full object-cover object-top absolute inset-0"
                   />
                 ) : (
                   <div className="h-full w-full absolute inset-0 bg-muted flex items-center justify-center">
