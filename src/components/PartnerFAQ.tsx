@@ -71,7 +71,7 @@ const PartnerFAQ = () => {
         </p>
 
         <Card>
-          <CardContent className="grid gap-4 p-5 sm:grid-cols-3">
+          <CardContent className="grid gap-4 p-5 sm:grid-cols-2">
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-primary" />
               <div>
@@ -88,13 +88,6 @@ const PartnerFAQ = () => {
                 <a href="https://danharris.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
                   danharris.com
                 </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <ExternalLink className="h-5 w-5 text-primary" />
-              <div>
-                <p className="text-xs text-muted-foreground">Dashboard</p>
-                <span className="text-sm font-medium text-muted-foreground">[Link coming soon]</span>
               </div>
             </div>
           </CardContent>
