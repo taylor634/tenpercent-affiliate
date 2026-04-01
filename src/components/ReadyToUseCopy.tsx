@@ -40,11 +40,9 @@ const ReadyToUseCopy = () => {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Ready-to-Use Copy</h2>
+        <h2 className="text-2xl font-bold">Ready-to-Use Graphics</h2>
         <p className="text-muted-foreground">
-          These are plug-and-play scripts for every channel. Swap in anything in{" "}
-          <span className="rounded bg-primary/10 px-1 font-medium text-primary">[brackets]</span>{" "}
-          to make it yours. The more honest and personal your take, the better it lands — your audience can feel the difference.
+          Download and use these graphics across your channels. More assets will be added over time.
         </p>
       </div>
 
@@ -54,9 +52,9 @@ const ReadyToUseCopy = () => {
             <section.icon className="h-5 w-5 text-foreground" />
             {section.heading}
           </h3>
-          <div className="grid gap-4">
-            {section.blocks.map((block) => (
-              <CopyBlock key={block.title} {...block} />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {section.graphics.map((title) => (
+              <GraphicPlaceholder key={title} title={title} />
             ))}
           </div>
         </div>
