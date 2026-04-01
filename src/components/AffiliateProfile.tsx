@@ -228,29 +228,31 @@ const AffiliateProfile = () => {
             <h3 className="text-lg font-semibold text-foreground">Testimonial Preview</h3>
             <p className="text-sm text-muted-foreground">This is how your Testimonial will appear on your affiliate page</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_320px] gap-1 rounded-xl">
-            <div className="flex flex-col justify-between bg-foreground p-8 md:p-10 rounded-lg min-h-[320px]">
-              {testimonial && (
-                <blockquote className="text-lg md:text-xl italic leading-relaxed text-background font-light break-words overflow-wrap-anywhere">
-                  &ldquo;{testimonial}&rdquo;
-                </blockquote>
-              )}
-              {displayName && (
-                <div className="mt-8 flex items-center gap-3 shrink-0">
-                  <span className="block h-[2px] w-8 bg-primary" />
-                  <span className="text-sm tracking-widest uppercase text-background/70">
-                    {displayName}
-                  </span>
-                </div>
-              )}
-            </div>
-            {headshotUrl && (
-              <div className="rounded-lg overflow-hidden md:w-[320px]">
-                <img
-                  src={headshotUrl}
-                  alt={displayName || "Affiliate headshot"}
-                  className="h-full w-full object-cover"
-                />
+          <div className="relative rounded-xl overflow-hidden min-h-[480px]">
+            {headshotUrl ? (
+              <img
+                src={headshotUrl}
+                alt={displayName || "Affiliate headshot"}
+                className="h-full w-full object-cover absolute inset-0"
+              />
+            ) : (
+              <div className="h-full w-full absolute inset-0 bg-muted" />
+            )}
+            {(testimonial || displayName) && (
+              <div className="absolute bottom-0 right-0 w-full md:w-[55%] bg-foreground/90 p-8 md:p-10">
+                {testimonial && (
+                  <blockquote className="text-base md:text-lg leading-relaxed text-background font-light break-words overflow-wrap-anywhere">
+                    &ldquo;{testimonial}&rdquo;
+                  </blockquote>
+                )}
+                {displayName && (
+                  <div className="mt-6 flex items-center gap-3">
+                    <span className="block h-[2px] w-6 bg-primary" />
+                    <span className="text-xs tracking-widest uppercase text-background/70">
+                      {displayName}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
           </div>
