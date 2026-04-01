@@ -20,10 +20,8 @@ const AffiliateProfile = () => {
   const [displayName, setDisplayName] = useState("");
   const [testimonial, setTestimonial] = useState("");
   const [headshotUrl, setHeadshotUrl] = useState<string | null>(null);
-  const [heroImageUrl, setHeroImageUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [uploadingHero, setUploadingHero] = useState(false);
 
   const { data: profile, isLoading: loading } = useQuery({
     queryKey: ["affiliate-profile", user?.id],
