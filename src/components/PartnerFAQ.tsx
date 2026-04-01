@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Can I promote multiple apps or brands?",
-    a: "Yes — we don't require exclusivity. We just ask that you don't run a 10% With Dan Harris promo back-to-back with a competing meditation app in the same piece of content. That's it.",
+    a: "Yes,  we don’t require exclusivity. We just ask that you don’t run a 10% With Dan Harris promo back-to-back with a competing meditation app in the same piece of content. That’s it.",
   },
   {
     q: "What if someone already subscribes?",
