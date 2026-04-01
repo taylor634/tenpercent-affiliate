@@ -274,7 +274,7 @@ const AffiliateProfile = () => {
                   </div>
                 )}
                 {(testimonial || displayName) && (
-                  <div className="absolute bottom-0 right-0 w-full md:w-[85%] bg-foreground/90 p-6 md:p-8">
+                  <div className="absolute bottom-0 right-0 w-full md:w-[70%] bg-foreground/90 p-4 md:p-6">
                     {testimonial && (
                       <blockquote className="text-sm md:text-base leading-relaxed text-background font-light break-words">
                         &ldquo;{testimonial}&rdquo;
