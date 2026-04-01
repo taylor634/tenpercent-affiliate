@@ -58,7 +58,7 @@ const Dashboard = () => {
           <TabsContent value="welcome"><WelcomeSection /></TabsContent>
           <TabsContent value="profile"><AffiliateProfile /></TabsContent>
           <TabsContent value="brand"><BrandGuidelines /></TabsContent>
-          <TabsContent value="copy"><ReadyToUseCopy /></TabsContent>
+          <TabsContent value="graphics"><ReadyToUseCopy /></TabsContent>
           <TabsContent value="tips"><PerformanceTips /></TabsContent>
           <TabsContent value="faq"><PartnerFAQ /></TabsContent>
         </Tabs>
