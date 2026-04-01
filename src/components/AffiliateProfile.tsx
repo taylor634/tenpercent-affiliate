@@ -5,25 +5,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Camera, Save, User, Loader2, ImageIcon } from "lucide-react";
+import { Camera, Save, User, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
-import logo from "@/assets/logo.png";
 
 const AffiliateProfile = () => {
   const { user } = useAuth();
   
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const heroInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
   const [testimonial, setTestimonial] = useState("");
   const [headshotUrl, setHeadshotUrl] = useState<string | null>(null);
-  const [heroImageUrl, setHeroImageUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [uploadingHero, setUploadingHero] = useState(false);
 
   const { data: profile, isLoading: loading } = useQuery({
     queryKey: ["affiliate-profile", user?.id],
@@ -44,7 +40,6 @@ const AffiliateProfile = () => {
       setDisplayName(profile.display_name);
       setTestimonial(profile.testimonial);
       setHeadshotUrl(profile.headshot_url);
-      setHeroImageUrl(profile.hero_image_url ?? null);
     }
   }, [profile]);
 
@@ -139,41 +134,6 @@ const AffiliateProfile = () => {
     setUploading(false);
   };
 
-  const handleHeroUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || !user) return;
-    setUploadingHero(true);
-
-    try {
-      const resized = await resizeImage(file, 1920);
-      const filePath = `${user.id}/hero-${Date.now()}.jpg`;
-      const { error: uploadError } = await supabase.storage
-        .from("headshots")
-        .upload(filePath, resized, { upsert: true, contentType: "image/jpeg" });
-
-      if (uploadError) {
-        toast.error("Upload failed.");
-        setUploadingHero(false);
-        return;
-      }
-
-      const { data: { publicUrl } } = supabase.storage
-        .from("headshots")
-        .getPublicUrl(filePath);
-
-      await supabase
-        .from("affiliate_profiles")
-        .update({ hero_image_url: publicUrl } as any)
-        .eq("user_id", user.id);
-
-      setHeroImageUrl(publicUrl);
-      toast.success("Hero image uploaded!");
-    } catch {
-      toast.error("Upload failed.");
-    }
-    setUploadingHero(false);
-  };
-
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -261,80 +221,6 @@ const AffiliateProfile = () => {
           </CardContent>
         </Card>
       </div>
-
-      {/* Hero Image Upload */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg flex items-center gap-2">
-            <ImageIcon className="h-5 w-5 text-primary" />
-            Hero Image
-          </CardTitle>
-          <CardDescription>
-            This large photo will be used as the background at the top of your affiliate landing page.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {heroImageUrl && (
-            <div className="relative max-w-sm overflow-hidden rounded-lg border border-border" style={{ aspectRatio: '16/9' }}>
-              <img
-                src={heroImageUrl}
-                alt="Hero preview"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          )}
-          <input
-            ref={heroInputRef}
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={handleHeroUpload}
-          />
-          <Button
-            variant="outline"
-            onClick={() => heroInputRef.current?.click()}
-            className="gap-2"
-            disabled={uploadingHero}
-          >
-            {uploadingHero ? <Loader2 className="h-4 w-4 animate-spin" /> : <ImageIcon className="h-4 w-4" />}
-            {uploadingHero ? "Uploading..." : heroImageUrl ? "Change Hero Image" : "Upload Hero Image"}
-          </Button>
-        </CardContent>
-      </Card>
-
-      {/* Hero Landing Page Preview */}
-      {heroImageUrl && displayName && (
-        <div className="space-y-3">
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">Landing Page Preview</h3>
-            <p className="text-sm text-muted-foreground">This is how your affiliate landing page hero will appear</p>
-          </div>
-          <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: '16/9' }}>
-            <img
-              src={heroImageUrl}
-              alt="Hero background"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-            {/* Content overlay */}
-            <div className="relative z-10 flex h-full flex-col justify-end p-6 md:p-10">
-              {/* Logo + Text + buttons bottom-left */}
-              <div className="max-w-lg">
-                <img src={logo} alt="10% With Dan Harris" className="h-8 md:h-10 object-contain mb-4" />
-                <h2 className="text-2xl md:text-4xl font-light text-white leading-tight">
-                  Join {displayName} in the<br />10% Happier with Dan Harris community
-                </h2>
-                <div className="mt-4">
-                  <div className="inline-block bg-primary px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider text-white rounded">
-                    Start Your Practice
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {(displayName || headshotUrl || testimonial) && (
         <div className="space-y-3">
