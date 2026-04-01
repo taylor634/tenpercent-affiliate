@@ -43,32 +43,6 @@ const BrandGuidelines = () => {
         </Card>
       </div>
 
-      {/* Brand Voice */}
-      <div className="space-y-3">
-        <h3 className="text-xl font-bold">Brand Voice</h3>
-        <p className="text-muted-foreground">When you talk about the app, aim for this energy:</p>
-      </div>
-
-      <Card>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[180px] font-semibold">Tone to use</TableHead>
-                <TableHead className="font-semibold">Why it works</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {voiceRows.map((r) => (
-                <TableRow key={r.tone}>
-                  <TableCell className="font-medium">{r.tone}</TableCell>
-                  <TableCell className="text-muted-foreground">{r.why}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
 
       {/* What to Avoid */}
       <div className="space-y-3">
