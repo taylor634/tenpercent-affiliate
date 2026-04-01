@@ -22,9 +22,7 @@ const PerformanceTips = () => {
     <div className="space-y-8">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Performance Tips</h2>
-        <p className="text-muted-foreground">
-          These are the things that actually move the needle — we've seen them work over and over.
-        </p>
+        <p className="text-muted-foreground">​</p>
       </div>
 
       {/* What Works */}
