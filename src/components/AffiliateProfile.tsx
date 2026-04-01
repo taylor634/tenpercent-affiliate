@@ -160,7 +160,7 @@ const AffiliateProfile = () => {
           <CardContent className="flex flex-col items-center gap-4">
             <Avatar className="h-40 w-40 border-2 border-border">
               {headshotUrl ? (
-                <AvatarImage src={headshotUrl} alt="Affiliate headshot" className="object-cover" />
+                <AvatarImage src={headshotUrl} alt="Affiliate headshot" className="object-cover object-top" />
               ) : (
                 <AvatarFallback className="bg-muted">
                   <User className="h-16 w-16 text-muted-foreground" />
