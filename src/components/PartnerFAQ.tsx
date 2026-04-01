@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "What if someone already subscribes?",
-    a: "The discount and commission apply to first-time annual subscribers only. If someone is already subscribed or is upgrading from monthly, no commission is earned on that one.",
+    a: "The discount and commission apply to first-time annual subscribers only. If someone is already subscribed or is upgrading from monthly, no commission is earned.",
   },
   {
     q: "Can I make a custom offer?",
