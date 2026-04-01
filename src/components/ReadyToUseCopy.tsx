@@ -1,112 +1,37 @@
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Check, Copy, Mail, Mic, Radio, Share2 } from "lucide-react";
-import { toast } from "sonner";
+import { ImageIcon, Mail, Share2 } from "lucide-react";
 
-interface CopyBlockProps {
+interface GraphicPlaceholderProps {
   title: string;
-  content: string;
 }
 
-const CopyBlock = ({ title, content }: CopyBlockProps) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(content);
-    setCopied(true);
-    toast.success("Copied to clipboard!");
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  // Highlight [bracketed] text
-  const highlighted = content.split(/(\[[^\]]+\])/).map((part, i) =>
-    part.startsWith("[") ? (
-      <span key={i} className="rounded bg-primary/10 px-1 font-medium text-primary">
-        {part}
-      </span>
-    ) : (
-      <span key={i}>{part}</span>
-    )
-  );
-
-  return (
-    <Card>
-      <CardHeader className="flex-row items-center justify-between pb-2">
-        <CardTitle className="text-sm uppercase tracking-wide text-primary">{title}</CardTitle>
-        <Button size="sm" variant="outline" onClick={handleCopy} className="h-8 gap-1.5">
-          {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-          {copied ? "Copied" : "Copy"}
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <p className="whitespace-pre-line text-sm text-muted-foreground leading-relaxed">
-          {highlighted}
-        </p>
-      </CardContent>
-    </Card>
-  );
-};
+const GraphicPlaceholder = ({ title }: GraphicPlaceholderProps) => (
+  <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-sm uppercase tracking-wide text-primary">{title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 bg-muted/30 py-12 text-muted-foreground">
+        <ImageIcon className="mb-2 h-8 w-8" />
+        <p className="text-sm">Graphic coming soon</p>
+      </div>
+    </CardContent>
+  </Card>
+);
 
 const sections = [
   {
     icon: Mail,
     heading: "Newsletter",
-    blocks: [
-      {
-        title: "Subject Line Options",
-        content: ``,
-      },
-      {
-        title: "Newsletter Body",
-        content: ``,
-      },
-    ],
-  },
-  {
-    icon: Mic,
-    heading: "Podcast",
-    blocks: [
-      {
-        title: "Short Ad Read (30 sec)",
-        content: ``,
-      },
-      {
-        title: "Longer Ad Read (60 sec)",
-        content: ``,
-      },
-    ],
-  },
-  {
-    icon: Radio,
-    heading: "Feed Drop / Solo Episode",
-    blocks: [
-      {
-        title: "Feed Drop Intro (if Dan's team provides an episode)",
-        content: ``,
-      },
-      {
-        title: "Solo Interview / Episode Closer",
-        content: ``,
-      },
-    ],
+    graphics: ["Newsletter Banner", "Newsletter Inline Graphic"],
   },
   {
     icon: Share2,
     heading: "Social Media",
-    blocks: [
-      {
-        title: "Instagram / Facebook Post",
-        content: ``,
-      },
-      {
-        title: "X / Twitter Post",
-        content: ``,
-      },
-      {
-        title: "Instagram Stories (3–4 slides)",
-        content: ``,
-      },
+    graphics: [
+      "Instagram / Facebook Post",
+      "X / Twitter Post",
+      "Instagram Stories (3–4 slides)",
     ],
   },
 ];
@@ -115,11 +40,9 @@ const ReadyToUseCopy = () => {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Ready-to-Use Copy</h2>
+        <h2 className="text-2xl font-bold">Ready-to-Use Graphics</h2>
         <p className="text-muted-foreground">
-          These are plug-and-play scripts for every channel. Swap in anything in{" "}
-          <span className="rounded bg-primary/10 px-1 font-medium text-primary">[brackets]</span>{" "}
-          to make it yours. The more honest and personal your take, the better it lands — your audience can feel the difference.
+          Download and use these graphics across your channels. More assets will be added over time.
         </p>
       </div>
 
@@ -129,9 +52,9 @@ const ReadyToUseCopy = () => {
             <section.icon className="h-5 w-5 text-foreground" />
             {section.heading}
           </h3>
-          <div className="grid gap-4">
-            {section.blocks.map((block) => (
-              <CopyBlock key={block.title} {...block} />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {section.graphics.map((title) => (
+              <GraphicPlaceholder key={title} title={title} />
             ))}
           </div>
         </div>
