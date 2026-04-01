@@ -42,7 +42,7 @@ const ReadyToUseCopy = () => {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Ready-to-Use Graphics</h2>
         <p className="text-muted-foreground">
-          Download and use these graphics across your channels. More assets will be added over time.
+          Download and use these graphics across your channels.
         </p>
       </div>
 
