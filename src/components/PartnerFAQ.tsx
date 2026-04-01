@@ -101,7 +101,7 @@ const PartnerFAQ = () => {
         </Card>
 
         <p className="text-center text-sm text-muted-foreground pt-4">
-          Thanks for being part of this. We're really glad you're here.<br />
+          Thanks for being part of this. We appreciate it!<br />
           <span className="font-medium">— The 10% With Dan Harris Team</span>
         </p>
       </div>
