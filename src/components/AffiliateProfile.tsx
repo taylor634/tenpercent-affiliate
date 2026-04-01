@@ -274,16 +274,16 @@ const AffiliateProfile = () => {
                   </div>
                 )}
                 {(testimonial || displayName) && (
-                  <div className="absolute bottom-0 right-0 w-full md:w-[70%] bg-foreground/90 p-4 md:p-6">
+                  <div className="absolute bottom-0 right-0 w-full md:w-[58%] lg:w-[52%] bg-foreground/88 p-3 md:p-4">
                     {testimonial && (
-                      <blockquote className="text-sm md:text-base leading-relaxed text-background font-light break-words">
+                      <blockquote className="text-xs md:text-sm leading-relaxed text-background font-light break-words">
                         &ldquo;{testimonial}&rdquo;
                       </blockquote>
                     )}
                     {displayName && (
-                      <div className="mt-4 flex items-center gap-3">
-                        <span className="block h-[2px] w-6 bg-primary" />
-                        <span className="text-[10px] tracking-widest uppercase text-background/70">
+                      <div className="mt-3 flex items-center gap-2">
+                        <span className="block h-[2px] w-5 bg-primary" />
+                        <span className="text-[9px] tracking-widest uppercase text-background/70">
                           {displayName}
                         </span>
                       </div>
