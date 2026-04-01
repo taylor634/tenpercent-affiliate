@@ -41,7 +41,7 @@ const Dashboard = () => {
               { value: "welcome", label: "Welcome" },
               { value: "profile", label: "Your Profile" },
               { value: "brand", label: "Brand Guidelines" },
-              { value: "copy", label: "Ready-to-Use Copy" },
+              { value: "graphics", label: "Ready-to-Use Graphics" },
               { value: "tips", label: "Performance Tips" },
               { value: "faq", label: "FAQ & Support" },
             ].map((tab) => (
@@ -58,7 +58,7 @@ const Dashboard = () => {
           <TabsContent value="welcome"><WelcomeSection /></TabsContent>
           <TabsContent value="profile"><AffiliateProfile /></TabsContent>
           <TabsContent value="brand"><BrandGuidelines /></TabsContent>
-          <TabsContent value="copy"><ReadyToUseCopy /></TabsContent>
+          <TabsContent value="graphics"><ReadyToUseCopy /></TabsContent>
           <TabsContent value="tips"><PerformanceTips /></TabsContent>
           <TabsContent value="faq"><PartnerFAQ /></TabsContent>
         </Tabs>
