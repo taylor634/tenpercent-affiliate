@@ -7,6 +7,7 @@ const avoidItems = [
   "Don't use the phrase \"life-changing\" without personal qualification",
   "Don’t compare the app favorably or unfavorably to competitors by name\n",
   "Don't share commission amounts with your audience",
+  "Don't position the app as a fix for serious mental illness. It's a wellness tool — genuinely useful, but not a replacement for therapy or professional care.",
 ];
 
 const BrandGuidelines = () => {
