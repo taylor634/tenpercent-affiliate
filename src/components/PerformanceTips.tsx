@@ -1,20 +1,40 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { Lightbulb, Target } from "lucide-react";
 
-const whatWorks = [
-  { bold: "Personal stories outperform scripts.", detail: "Lead with what you actually noticed. Your audience can feel the difference between a real recommendation and a script." },
-  { bold: "Skepticism is a selling point.", detail: "The best-performing reads start with something like \"I was skeptical\" or \"I don't usually plug things like this.\" That kind of honesty is exactly on-brand for Dan — and it converts." },
-  { bold: "Repeat the link.", detail: "On podcasts, say your URL twice — once naturally in the flow, once slowly and clearly at the end. On social, put it in the caption and your link in bio." },
-  { bold: "Mention the discount explicitly.", detail: "The 20% off is a real incentive — don't bury it. Say it clearly and say it more than once." },
-  { bold: "Specificity converts.", detail: "Instead of \"it helps with stress,\" try something like: \"I did a 7-minute session before a big meeting and felt noticeably calmer.\" Specific details are way more persuasive than vague claims." },
-  { bold: "Test your link.", detail: "Before anything goes live, click your own link and make sure it's working and the 20% off is showing up correctly." },
+const bigPicture = [
+  {
+    bold: "Repetition.",
+    detail:
+      "The same frequency and duration of promotion won't work for everyone, and you know what makes the most sense for your organization, but repetition matters. If your audience is like ours, many people tune in and out (and in and out again), so one or two mentions only hits a small fraction of your audience; and many of those people need to hear the offer more than once.",
+  },
+  {
+    bold: "Consider a clear campaign across channels.",
+    detail:
+      "Again, if your audience is like ours, they interact with you on multiple channels but their attention and engagement varies across all of them. Syncing a podcast drop, then running a few short promos, paired with a few newsletter spots or mentions and social posts is best practice.",
+  },
 ];
 
-const whatToAvoid = [
-  "Don't stack this in a cluster of back-to-back sponsor reads. If your audience hears three ads in a row, yours is the one they tune out.",
-  "Don't set it and forget it. Swap in fresh copy every few months — audiences stop hearing words they've already heard.",
-  "Don't rush the URL. Slow down, especially on podcasts — people actually need a second to write it down.",
-  "Don't position the app as a fix for serious mental illness. It's a wellness tool — genuinely useful, but not a replacement for therapy or professional care.",
+const tactics = [
+  {
+    bold: "A Genuine endorsement.",
+    detail:
+      "Lead with what you actually noticed or why you're a fan of Dan's if you're not personally into meditation.",
+  },
+  {
+    bold: "Repeat the URL.",
+    detail:
+      "In audio, say your URL twice: once naturally in the flow, once slowly and clearly at the end. On social, put it in the caption and your link in bio.",
+  },
+  {
+    bold: "Repeat the discount if space allows.",
+    detail:
+      "The 20% off is a real incentive, so don't bury it! Be Specific. Instead of \"it helps with stress,\" e.g., try something like: \"I did a 7-minute session before a big meeting and felt noticeably calmer.\"",
+  },
+  {
+    bold: "Double Check.",
+    detail:
+      "We're here for you every step of the way, but do your thing and double check your link and URL before you push your content out in the world.",
+  },
 ];
 
 const PerformanceTips = () => {
@@ -25,14 +45,16 @@ const PerformanceTips = () => {
         <p className="text-muted-foreground">​</p>
       </div>
 
-      {/* What Works */}
+      {/* Big Picture */}
       <div className="space-y-4">
-        <h3 className="text-xl font-bold text-foreground">What Works</h3>
+        <div className="flex items-center gap-2">
+          <Lightbulb className="h-5 w-5 text-primary" />
+          <h3 className="text-xl font-bold text-foreground">Big Picture</h3>
+        </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {whatWorks.map((tip, i) => (
+          {bigPicture.map((tip, i) => (
             <Card key={i}>
               <CardContent className="flex gap-3 p-5">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                 <div>
                   <p className="font-semibold text-sm">{tip.bold}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{tip.detail}</p>
@@ -43,15 +65,20 @@ const PerformanceTips = () => {
         </div>
       </div>
 
-      {/* What to Avoid */}
+      {/* Tactics */}
       <div className="space-y-4">
-        <h3 className="text-xl font-bold text-foreground">What to Avoid</h3>
+        <div className="flex items-center gap-2">
+          <Target className="h-5 w-5 text-primary" />
+          <h3 className="text-xl font-bold text-foreground">Tactics</h3>
+        </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {whatToAvoid.map((item, i) => (
-            <Card key={i} className="border-destructive/20">
+          {tactics.map((tip, i) => (
+            <Card key={i}>
               <CardContent className="flex gap-3 p-5">
-                <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
-                <p className="text-sm text-muted-foreground">{item}</p>
+                <div>
+                  <p className="font-semibold text-sm">{tip.bold}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{tip.detail}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
