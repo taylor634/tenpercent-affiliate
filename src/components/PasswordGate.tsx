@@ -3,9 +3,8 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Lock } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.png";
-
-const PASS = "affiliate2026";
 
 interface PasswordGateProps {
   children: ReactNode;
@@ -17,14 +16,29 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
   );
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === PASS) {
-      sessionStorage.setItem("affiliate_auth", "true");
-      setAuthenticated(true);
-    } else {
+    setLoading(true);
+    setError(false);
+
+    try {
+      const { data, error: fnError } = await supabase.functions.invoke(
+        "verify-gate-password",
+        { body: { password } }
+      );
+
+      if (fnError || !data?.valid) {
+        setError(true);
+      } else {
+        sessionStorage.setItem("affiliate_auth", "true");
+        setAuthenticated(true);
+      }
+    } catch {
       setError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,6 +73,7 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
                   setError(false);
                 }}
                 className="pl-10"
+                disabled={loading}
               />
             </div>
             {error && (
@@ -66,8 +81,8 @@ const PasswordGate = ({ children }: PasswordGateProps) => {
                 Incorrect password. Please try again.
               </p>
             )}
-            <Button type="submit" className="w-full">
-              Enter Toolkit
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Verifying…" : "Enter Toolkit"}
             </Button>
           </form>
         </CardContent>
