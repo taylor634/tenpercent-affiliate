@@ -1,14 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AlertCircle } from "lucide-react";
-
-const voiceRows = [
-  { tone: "Warm and honest", why: "Dan's own voice is conversational and genuinely self-deprecating — match that and you're already halfway there" },
-  { tone: "Skeptic-friendly", why: "A lot of your audience has probably written off meditation before. Meet them where they are — no pressure, no preaching" },
-  { tone: "Practical", why: "Keep it grounded: short sessions, real benefits (better sleep, sharper focus, less stress), real life" },
-  { tone: "Personal", why: "Your own honest experience with the app is your most powerful tool — use it" },
-  { tone: "Science-grounded", why: "The science here is genuinely solid. Lean on it if it feels natural to you" },
-];
 
 const avoidItems = [
   "Don’t frame the app as spiritual or religious. If you're Buddhist, that’s cool, but you don’t need to be and meditation practice is compatible (and often related) to other spiritual or religious beliefs",
