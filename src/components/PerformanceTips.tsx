@@ -23,7 +23,7 @@ const tactics = [
   {
     bold: "Repeat the URL.",
     detail:
-      "In audio, say your URL twice: once naturally in the flow, once slowly and clearly at the end. On social, put it in the caption and your link in bio.",
+      "In audio,, say your URL twice: once naturally in the flow, once slowly and clearly at the end. On social, put it in the caption and your link in bio.",
   },
   {
     bold: "Repeat the discount if space allows.",
