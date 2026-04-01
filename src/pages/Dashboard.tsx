@@ -41,7 +41,7 @@ const Dashboard = () => {
               { value: "welcome", label: "Welcome" },
               { value: "profile", label: "Your Profile" },
               { value: "brand", label: "Brand Guidelines" },
-              { value: "copy", label: "Ready-to-Use Copy" },
+              { value: "graphics", label: "Ready-to-Use Graphics" },
               { value: "tips", label: "Performance Tips" },
               { value: "faq", label: "FAQ & Support" },
             ].map((tab) => (
