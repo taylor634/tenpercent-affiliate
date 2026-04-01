@@ -88,7 +88,7 @@ const BrandGuidelines = () => {
         <div className="space-y-2">
           {avoidItems.map((item, i) => (
             <Card key={i} className="border-destructive/20">
-              <CardContent className="p-4 text-sm text-muted-foreground">
+              <CardContent className="p-4 text-sm text-muted-foreground whitespace-pre-wrap">
                 {item}
               </CardContent>
             </Card>
