@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "Can I make a custom offer?",
-    a: "The standard offer is 20% off an annual subscription. If you want to talk through a custom offer or campaign, reach out — we're open to it.",
+    a: "The standard offer is 20% off an annual subscription. If you want to talk through a custom offer or campaign, please reach out; we’d love to talk more with you.",
   },
   {
     q: "What if my link isn't working?",
