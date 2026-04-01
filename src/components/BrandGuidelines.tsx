@@ -11,10 +11,10 @@ const voiceRows = [
 ];
 
 const avoidItems = [
-  "Don't frame the app as spiritual, religious, or \"woo\"",
+  "Don’t frame the app as spiritual or religious. If you're Buddhist, that’s cool, but you don’t need to be and meditation practice is compatible (and often related) to other spiritual or religious beliefs",
   "Don't promise specific health outcomes or make medical claims",
   "Don't use the phrase \"life-changing\" without personal qualification",
-  "Don't compare the app unfavorably to competitors by name",
+  "Don’t compare the app favorably or unfavorably to competitors by name\n",
   "Don't share commission amounts with your audience",
 ];
 
@@ -88,7 +88,7 @@ const BrandGuidelines = () => {
         <div className="space-y-2">
           {avoidItems.map((item, i) => (
             <Card key={i} className="border-destructive/20">
-              <CardContent className="p-4 text-sm text-muted-foreground">
+              <CardContent className="p-4 text-sm text-muted-foreground whitespace-pre-wrap">
                 {item}
               </CardContent>
             </Card>
