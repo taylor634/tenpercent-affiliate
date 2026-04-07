@@ -47,6 +47,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     );
 
+    // Ensure loading resolves even if no session exists
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        setLoading(false);
+      }
+    });
+
     return () => subscription.unsubscribe();
   }, []);
 
