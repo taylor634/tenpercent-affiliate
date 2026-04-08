@@ -52,9 +52,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (!session) {
         setLoading(false);
       }
+    }).catch(() => {
+      setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    // Hard timeout fallback in case auth never responds
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
+    return () => {
+      subscription.unsubscribe();
+      clearTimeout(timeout);
+    };
   }, []);
 
   const signOut = async () => {
