@@ -12,7 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 const AffiliateProfile = () => {
-  const { user } = useAuth();
+  const { user, isReady } = useAuth();
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
@@ -31,7 +31,7 @@ const AffiliateProfile = () => {
         .maybeSingle();
       return data;
     },
-    enabled: !!user,
+    enabled: isReady && !!user,
     staleTime: 5 * 60 * 1000,
   });
 
