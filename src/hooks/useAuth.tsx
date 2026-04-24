@@ -6,6 +6,7 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   isAdmin: boolean;
+  isReady: boolean;
   loading: boolean;
   signOut: () => Promise<void>;
 }
@@ -14,6 +15,7 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   session: null,
   isAdmin: false,
+  isReady: false,
   loading: true,
   signOut: async () => {},
 });
@@ -24,40 +26,48 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchAdmin = (userId: string) => {
+      // Fire-and-forget — don't block UI on the role lookup
+      supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .eq("role", "admin")
+        .maybeSingle()
+        .then(({ data }) => setIsAdmin(!!data));
+    };
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
+      (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
-
         if (session?.user) {
-          const { data } = await supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", session.user.id)
-            .eq("role", "admin")
-            .maybeSingle();
-          setIsAdmin(!!data);
+          fetchAdmin(session.user.id);
         } else {
           setIsAdmin(false);
         }
-        setLoading(false);
       }
     );
 
-    // Ensure loading resolves even if no session exists
+    // Restore session from storage; this is what gates `isReady`
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) {
-        setLoading(false);
-      }
+      setSession(session);
+      setUser(session?.user ?? null);
+      if (session?.user) fetchAdmin(session.user.id);
+      setIsReady(true);
+      setLoading(false);
     }).catch(() => {
+      setIsReady(true);
       setLoading(false);
     });
 
-    // Hard timeout fallback in case auth never responds
+    // Hard timeout fallback
     const timeout = setTimeout(() => {
+      setIsReady(true);
       setLoading(false);
     }, 5000);
 
@@ -72,7 +82,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, isAdmin, loading, signOut }}>
+    <AuthContext.Provider value={{ user, session, isAdmin, isReady, loading, signOut }}>
       {children}
     </AuthContext.Provider>
   );
