@@ -23,6 +23,7 @@ export type Database = {
           hero_image_url: string | null
           id: string
           last_name: string
+          slug: string | null
           testimonial: string
           updated_at: string
           user_id: string
@@ -35,6 +36,7 @@ export type Database = {
           hero_image_url?: string | null
           id?: string
           last_name?: string
+          slug?: string | null
           testimonial?: string
           updated_at?: string
           user_id: string
@@ -47,6 +49,7 @@ export type Database = {
           hero_image_url?: string | null
           id?: string
           last_name?: string
+          slug?: string | null
           testimonial?: string
           updated_at?: string
           user_id?: string

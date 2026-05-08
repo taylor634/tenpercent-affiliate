@@ -1,0 +1,2 @@
+ALTER TABLE public.affiliate_profiles ADD COLUMN IF NOT EXISTS slug TEXT;
+CREATE UNIQUE INDEX IF NOT EXISTS affiliate_profiles_slug_unique ON public.affiliate_profiles (LOWER(slug)) WHERE slug IS NOT NULL AND slug <> '';
