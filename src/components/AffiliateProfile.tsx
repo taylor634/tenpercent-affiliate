@@ -208,6 +208,25 @@ const AffiliateProfile = () => {
               />
             </div>
             <div className="space-y-2">
+              <Label htmlFor="affiliate-slug">Your Landing Page URL</Label>
+              <div className="flex items-stretch rounded-md border border-input bg-background overflow-hidden focus-within:ring-2 focus-within:ring-ring">
+                <span className="flex items-center px-3 text-sm text-muted-foreground bg-muted border-r border-input whitespace-nowrap">
+                  www.danharris.com/
+                </span>
+                <Input
+                  id="affiliate-slug"
+                  placeholder="your-name"
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
+                  maxLength={50}
+                  className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Letters, numbers, and hyphens only. This will be your unique affiliate landing page.
+              </p>
+            </div>
+            <div className="space-y-2">
               <Label htmlFor="affiliate-testimonial">Your Testimonial / Copy</Label>
               <Textarea
                 id="affiliate-testimonial"
