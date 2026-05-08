@@ -41,6 +41,7 @@ const AffiliateProfile = () => {
       setDisplayName(profile.display_name);
       setTestimonial(profile.testimonial);
       setHeadshotUrl(profile.headshot_url);
+      setSlug((profile as any).slug ?? "");
     }
   }, [profile]);
 
