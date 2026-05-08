@@ -53,9 +53,10 @@ const AffiliateProfile = () => {
     const timeoutId = window.setTimeout(() => controller.abort(), 12000);
 
     try {
+      const cleanSlug = slug.trim().toLowerCase().replace(/[^a-z0-9-]/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
       const { error } = await supabase
         .from("affiliate_profiles")
-        .update({ display_name: displayName, testimonial })
+        .update({ display_name: displayName, testimonial, slug: cleanSlug || null } as any)
         .eq("user_id", user.id)
         .abortSignal(controller.signal);
 
