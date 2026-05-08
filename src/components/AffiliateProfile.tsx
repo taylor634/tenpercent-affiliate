@@ -16,6 +16,7 @@ const AffiliateProfile = () => {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
+  const [slug, setSlug] = useState("");
   const [testimonial, setTestimonial] = useState("");
   const [headshotUrl, setHeadshotUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
