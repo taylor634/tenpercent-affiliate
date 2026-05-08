@@ -16,6 +16,7 @@ const AffiliateProfile = () => {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [displayName, setDisplayName] = useState("");
+  const [slug, setSlug] = useState("");
   const [testimonial, setTestimonial] = useState("");
   const [headshotUrl, setHeadshotUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -40,6 +41,7 @@ const AffiliateProfile = () => {
       setDisplayName(profile.display_name);
       setTestimonial(profile.testimonial);
       setHeadshotUrl(profile.headshot_url);
+      setSlug((profile as any).slug ?? "");
     }
   }, [profile]);
 
@@ -51,9 +53,10 @@ const AffiliateProfile = () => {
     const timeoutId = window.setTimeout(() => controller.abort(), 12000);
 
     try {
+      const cleanSlug = slug.trim().toLowerCase().replace(/[^a-z0-9-]/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
       const { error } = await supabase
         .from("affiliate_profiles")
-        .update({ display_name: displayName, testimonial })
+        .update({ display_name: displayName, testimonial, slug: cleanSlug || null } as any)
         .eq("user_id", user.id)
         .abortSignal(controller.signal);
 
@@ -203,6 +206,25 @@ const AffiliateProfile = () => {
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
               />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="affiliate-slug">Your Landing Page URL</Label>
+              <div className="flex items-stretch rounded-md border border-input bg-background overflow-hidden focus-within:ring-2 focus-within:ring-ring">
+                <span className="flex items-center px-3 text-sm text-muted-foreground bg-muted border-r border-input whitespace-nowrap">
+                  www.danharris.com/
+                </span>
+                <Input
+                  id="affiliate-slug"
+                  placeholder="your-name"
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
+                  maxLength={50}
+                  className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Letters, numbers, and hyphens only. This will be your unique affiliate landing page.
+              </p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="affiliate-testimonial">Your Testimonial / Copy</Label>
